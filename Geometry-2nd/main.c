@@ -15,6 +15,12 @@
 #  include <GL/glut.h>
 #endif
 
+#define WINDOW_WIDTH 300
+#define WINDOW_HEIGHT 400
+
+int i = 0;
+int increment = 1;
+
 static int make_resources(void)
 {
     return 1;
@@ -24,27 +30,21 @@ static void update_fade_factor(void)
 }
 static void render(void)
 {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 0.0f, 0.0f, 1.0f);
+    
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
     
-    glColor3f(0.0f, 0.0f, 1.0f); // Let it be blue
-    glBegin(GL_QUADS); // 2x2 pixels
-    glVertex2f(1.0f, 1.0f);
-    glVertex2f(2.0f, 1.0f);
-    glVertex2f(2.0f, 2.0f);
-    glVertex2f(1.0f, 2.0f);
-    glEnd();
-    
-    //    Now outline that in yellow keeping the 2x2 blue pixels intact:
-    
-    glColor3f(1.0f, 1.0f, 0.0f); // Let it be yellow.
+    glColor3f(0.0f, 0.0f, 1.0f); // Let it be blue.
     glBegin(GL_LINE_STRIP);
-    glVertex2f(0.5f, 0.5f);
-    glVertex2f(2.5f, 0.5f);
-    glVertex2f(2.5f, 2.5f);
-    glVertex2f(0.5f, 2.5f);
-    glVertex2f(0.5f, 0.5f);
+    glVertex2i(i, i);
+    glVertex2i(i, 200);
+    glVertex2i(200, 200);
+    glVertex2i(200, i);
+    glVertex2i(i, i);
     glEnd();
     
     glColor3f(0.0f, 0.0f, 0.0f); // sets color to black.
@@ -57,18 +57,26 @@ static void render(void)
     glEnd();
     
     glFlush();
-    
     glutSwapBuffers();
+    
+    if (i > WINDOW_WIDTH){
+        increment = -1;
+    }
+    else if (i < 0){
+        increment = 1;
+    }
+    
+    i = i+increment;
+    glutPostRedisplay();
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
     
-    
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-    glutInitWindowSize(400, 300);
+    glutInitWindowSize(WINDOW_HEIGHT, WINDOW_WIDTH);
     glutCreateWindow("Hello World");
     glutDisplayFunc(&render);
     glutIdleFunc(&update_fade_factor);
@@ -79,5 +87,6 @@ int main(int argc, const char * argv[]) {
     }
     
     glutMainLoop();
+    
     return 0;
 }
