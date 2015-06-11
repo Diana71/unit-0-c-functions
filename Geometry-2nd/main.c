@@ -30,6 +30,8 @@ static void update_fade_factor(void)
 }
 static void render(void)
 {
+    
+    // http://stackoverflow.com/a/2602693
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 0.0f, 0.0f, 1.0f);
