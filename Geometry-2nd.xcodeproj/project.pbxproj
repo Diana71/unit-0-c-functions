@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		81D673141B2A2D00005BCBA1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 81D673131B2A2D00005BCBA1 /* main.c */; };
+		81D6731B1B2A2D75005BCBA1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D6731A1B2A2D75005BCBA1 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		81D673101B2A2D00005BCBA1 /* Geometry-2nd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Geometry-2nd"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D673131B2A2D00005BCBA1 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		81D6731A1B2A2D75005BCBA1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D6731B1B2A2D75005BCBA1 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +44,7 @@
 		81D673071B2A2D00005BCBA1 = {
 			isa = PBXGroup;
 			children = (
+				81D6731A1B2A2D75005BCBA1 /* OpenGL.framework */,
 				81D673121B2A2D00005BCBA1 /* Geometry-2nd */,
 				81D673111B2A2D00005BCBA1 /* Products */,
 			);
