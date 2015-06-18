@@ -18,9 +18,6 @@
 #define WINDOW_WIDTH 300
 #define WINDOW_HEIGHT 400
 
-int i = 0;
-int increment = 1;
-
 static int make_resources(void)
 {
     return 1;
@@ -28,9 +25,25 @@ static int make_resources(void)
 static void update_fade_factor(void)
 {
 }
+
+void changeColor(float r, float g, float b) {
+    glColor3f(r, g, b);
+}
+
+void drawRect(int x, int y, int width, int height) {
+    glBegin(GL_LINE_STRIP);
+    glVertex2i(x, y); // top left
+    glVertex2i(x + width, y); // top right
+    glVertex2i(x + width, y + height); // bottom right
+    glVertex2i(x, y + height); // bottom left
+    glVertex2i(x, y); // top right (close the rect)
+    glEnd();
+}
+
 static void render(void)
 {
     
+    // ignore this
     // http://stackoverflow.com/a/2602693
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -38,48 +51,38 @@ static void render(void)
     
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    //
     
     
-    glColor3f(0.0f, 0.0f, 1.0f); // Let it be blue.
-    glBegin(GL_LINE_STRIP);
-    glVertex2i(i, i);
-    glVertex2i(i, 200);
-    glVertex2i(200, 200);
-    glVertex2i(200, i);
-    glVertex2i(i, i);
-    glEnd();
+    /* THIS IS WHERE YOU CODE */
     
-    glColor3f(0.0f, 0.0f, 0.0f); // sets color to black.
-    glBegin(GL_TRIANGLE_STRIP); // draw in triangle strips
-    glVertex2f(-0.5f, 1.0f); // top of the roof
-    glVertex2f(-0.5f, 1.0f); // left corner of the roof
-    glVertex2f(0.5f, 0.25f); // right corner of the roof
-    glVertex2f(-0.5f, -0.5f); // bottom left corner of the house
-    glVertex2f(0.5f, -0.5f); //bottom right corner of the house
-    glEnd();
+     
+    changeColor(0.0, 0.0, 1.0); // blue
+    drawRect(10, 10, 200, 200);
     
+    
+    /* ---------------------- */
+    
+    
+    // ignore this
     glFlush();
     glutSwapBuffers();
+    //
+
+    // uncomment the following line if you want to continuously loop the `render` function
+    // this will make it possible to animate your shapes
     
-    if (i > WINDOW_WIDTH){
-        increment = -1;
-    }
-    else if (i < 0){
-        increment = 1;
-    }
-    
-    i = i+increment;
-    glutPostRedisplay();
+    // glutPostRedisplay();
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printf("Hello, World!\n");
     
+    // IGNORE
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
     glutInitWindowSize(WINDOW_HEIGHT, WINDOW_WIDTH);
-    glutCreateWindow("Hello World");
+    glutCreateWindow("");
     glutDisplayFunc(&render);
     glutIdleFunc(&update_fade_factor);
     
