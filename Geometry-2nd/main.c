@@ -15,7 +15,7 @@
 #  include <GL/glut.h>
 #endif
 
-#define WINDOW_WIDTH 300
+#define WINDOW_WIDTH 400
 #define WINDOW_HEIGHT 400
 
 static int make_resources(void)
@@ -40,6 +40,10 @@ void drawRect(int x, int y, int width, int height) {
     glEnd();
 }
 
+void drawSquare(int x, int y, int width) {
+    drawRect(x, y, width, width);
+}
+
 static void render(void)
 {
     
@@ -58,7 +62,13 @@ static void render(void)
     
      
     changeColor(0.0, 0.0, 1.0); // blue
-    drawRect(10, 10, 200, 200);
+    drawRect(10, 10, 200, 150);
+    
+    changeColor(0.0, 1.0, 0.0);
+    drawSquare(46, 26, 52);
+    drawSquare(116, 26, 52);
+    
+    drawRect(30, 100, 160, 40);
     
     
     /* ---------------------- */
